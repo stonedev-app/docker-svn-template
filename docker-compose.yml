@@ -7,3 +7,14 @@ services:
     container_name: svn-server-container
     ports:
       - "3690:3690"       # ホスト3690ポート→コンテナ3690ポート
+    volumes:
+      - ./data:/var/svn
+    command: >
+      bash -c "
+      if [ ! -d /var/svn/repos ]; then
+        svnadmin create /var/svn/repos &&
+        echo -e '[general]\\nanon-access = read\\nauth-access = write\\npassword-db = passwd\\nrealm = My SVN Repository' > /var/svn/repos/conf/svnserve.conf &&
+        echo -e '[users]\\nuser = password' > /var/svn/repos/conf/passwd;
+      fi;
+      svnserve -d --foreground -r /var/svn
+      "

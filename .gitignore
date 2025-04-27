@@ -1,0 +1,5 @@
+# data フォルダの中身を無視する
+data/*
+
+# .gitkeepファイルは無視しない
+!data/.gitkeep
