@@ -1,0 +1,9 @@
+services:
+  svn-server:
+    build:
+      context: .          # Dockerfileがあるディレクトリ
+      dockerfile: Dockerfile
+    image: svn-server-image:latest
+    container_name: svn-server-container
+    ports:
+      - "3690:3690"       # ホスト3690ポート→コンテナ3690ポート

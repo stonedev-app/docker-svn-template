@@ -17,10 +17,10 @@ RUN mkdir -p /var/svn/repos
 RUN svnadmin create /var/svn/repos
 
 # svnserve.confをコピーする
-COPY conf/svnserve.conf /var/svn/repos/conf/svnserve.conf
+COPY ./conf/svnserve.conf /var/svn/repos/conf/svnserve.conf
 
 # passwdをコピーする
-COPY conf/passwd /var/svn/repos/conf/passwd
+COPY ./conf/passwd /var/svn/repos/conf/passwd
 
 # SVNの標準ポートを開ける
 EXPOSE 3690
